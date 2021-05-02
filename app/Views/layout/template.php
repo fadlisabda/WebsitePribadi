@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- My Css -->
+    <link rel="stylesheet" href="/bootstrap/css/style.css">
+
     <title><?= $title; ?></title>
 </head>
 
