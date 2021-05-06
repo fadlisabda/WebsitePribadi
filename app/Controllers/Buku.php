@@ -6,6 +6,12 @@ use App\Models\BukuModel;
 
 class Buku extends BaseController
 {
+    /**
+     * Instance of the main Request object.
+     *
+     * @var HTTP\IncomingRequest
+     */
+    protected $request;
     protected $bukuModel;
     public function __construct()
     {
