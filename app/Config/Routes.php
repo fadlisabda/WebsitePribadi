@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'about\About::about');
 $routes->get('/contact', 'Contact::index');
+$routes->get('/buku/(:segment)', 'Buku::detail/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

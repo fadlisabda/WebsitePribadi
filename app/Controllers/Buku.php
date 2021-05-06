@@ -20,4 +20,13 @@ class Buku extends BaseController
         ];
         return view('buku/index', $data);
     }
+
+    public function detail($slug)
+    {
+        $data = [
+            'title' => 'Detail Buku',
+            'buku' => $this->bukuModel->getKomik($slug)
+        ];
+        return view('buku/detail', $data);
+    }
 }

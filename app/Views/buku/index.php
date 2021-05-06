@@ -21,7 +21,7 @@
                             <td><img src="/img/<?= $b['sampul'] ?>" class="sampul"></td>
                             <td><?= $b['judul']; ?></td>
                             <td>
-                                <a href="" class="btn btn-success">Detail</a>
+                                <a href="/buku/<?= $b['slug']; ?>" class="btn btn-success">Detail</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
