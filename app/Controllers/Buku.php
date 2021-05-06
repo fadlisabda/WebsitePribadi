@@ -25,7 +25,7 @@ class Buku extends BaseController
     {
         $data = [
             'title' => 'Detail Buku',
-            'buku' => $this->bukuModel->getKomik($slug)
+            'buku' => $this->bukuModel->getBuku($slug)
         ];
         return view('buku/detail', $data);
     }

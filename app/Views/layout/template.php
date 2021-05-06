@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- My Css -->
     <link rel="stylesheet" href="/bootstrap/css/style.css">
@@ -19,7 +19,7 @@
     <?= $this->include('layout/navbar'); ?>
     <?= $this->renderSection('content'); ?>
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

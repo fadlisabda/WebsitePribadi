@@ -8,7 +8,7 @@ class BukuModel extends Model
 {
     protected $table = 'buku';
     protected $useTimestamps = true;
-    public function getKomik($slug = false)
+    public function getBuku($slug = false)
     {
         if ($slug == false) {
             return $this->findAll();

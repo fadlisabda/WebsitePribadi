@@ -17,7 +17,7 @@
                             <a href="" class="btn btn-warning">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
                             <br><br>
-                            <a href="/buku">Kembali ke daftar buku</a>
+                            <a href="/buku">Kembali ke my book</a>
                         </div>
                     </div>
                 </div>
