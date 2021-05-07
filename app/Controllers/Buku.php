@@ -57,6 +57,25 @@ class Buku extends BaseController
                     'required' => '{field} buku harus diisi.',
                     'is_unique' => '{field} buku sudah terdaftar'
                 ]
+            ],
+            'penulis' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} buku harus diisi.'
+                ]
+            ],
+            'penerbit' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} buku harus diisi.'
+                ]
+            ],
+            'sampul' => [
+                'rules' => 'required|is_unique[buku.judul]',
+                'errors' => [
+                    'required' => '{field} buku harus diisi.',
+                    'is_unique' => '{field} buku sudah terdaftar'
+                ]
             ]
         ])) {
             $validation = \Config\Services::validation();
