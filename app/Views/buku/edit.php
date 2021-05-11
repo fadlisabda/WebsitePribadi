@@ -31,7 +31,7 @@
                     <label for="penerbit" class="col-sm-2 col-form-label">Penerbit</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control <?= ($validation->hasError('penerbit')) ? 'is-invalid' : ''; ?>" id="penerbit" name="penerbit" autocomplete="off" value="<?= (old('penerbit')) ? old('penerbit') : $buku['penerbit'] ?>">
-                        <div class=" invalid-feedback">
+                        <div class="invalid-feedback">
                             <?= $validation->getError('penerbit'); ?>
                         </div>
                     </div>
