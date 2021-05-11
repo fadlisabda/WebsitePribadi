@@ -71,15 +71,22 @@ class Buku extends BaseController
                 ]
             ],
             'sampul' => [
-                'rules' => 'required|is_unique[buku.judul]',
+                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'required' => '{field} buku harus diisi.',
-                    'is_unique' => '{field} buku sudah terdaftar'
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/buku/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/buku/create')->withInput();
+        }
+        $fileSampul = $this->request->getFile('sampul');
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'default.jpg';
+        } else {
+            $namaSampul = $fileSampul->getRandomName();
+            $fileSampul->move('img', $namaSampul);
         }
         $slug = url_title($this->request->getVar('judul'), '-', true);
         $this->bukuModel->save([
@@ -87,7 +94,7 @@ class Buku extends BaseController
             'slug' => $slug,
             'penulis' => $this->request->getVar('penulis'),
             'penerbit' => $this->request->getVar('penerbit'),
-            'sampul' => $this->request->getVar('sampul')
+            'sampul' => $namaSampul
         ]);
         session()->setFlashData('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('/buku');
@@ -95,6 +102,10 @@ class Buku extends BaseController
 
     public function delete($id)
     {
+        $buku = $this->bukuModel->find($id);
+        if ($buku['sampul'] != 'default.jpg') {
+            unlink('img/' . $buku['sampul']);
+        }
         $this->bukuModel->delete($id);
         session()->setFlashData('pesan', 'Data berhasil dihapus');
         return redirect()->to('/buku');
@@ -145,10 +156,28 @@ class Buku extends BaseController
                     'required' => '{field} buku harus diisi.',
                     'is_unique' => '{field} buku sudah terdaftar'
                 ]
+            ], 'sampul' => [
+                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/buku/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('/buku/edit/' . $this->request->getVar('slug'))->withInput();
+        }
+        $fileSampul = $this->request->getFile('sampul');
+        $buku = $this->bukuModel->find($id);
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = $this->request->getVar('sampulLama');
+        } else if ($buku['sampul'] == 'default.jpg') {
+            $namaSampul = $fileSampul->getRandomName();
+            $fileSampul->move('img', $namaSampul);
+        } else {
+            $namaSampul = $fileSampul->getRandomName();
+            $fileSampul->move('img', $namaSampul);
+            unlink('img/' . $this->request->getVar('sampulLama'));
         }
         $slug = url_title($this->request->getVar('judul'), '-', true);
         $this->bukuModel->save([
@@ -157,7 +186,7 @@ class Buku extends BaseController
             'slug' => $slug,
             'penulis' => $this->request->getVar('penulis'),
             'penerbit' => $this->request->getVar('penerbit'),
-            'sampul' => $this->request->getVar('sampul')
+            'sampul' => $namaSampul
         ]);
         session()->setFlashData('pesan', 'Data berhasil diubah');
         return redirect()->to('/buku');
