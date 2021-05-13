@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
     <!-- My Css -->
     <link rel="stylesheet" href="/bootstrap/css/style.css">
@@ -18,7 +18,7 @@
 <body>
     <?= $this->include('layout/navbar'); ?>
     <?= $this->renderSection('content'); ?>
-
+    <script src="/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         function previewImg() {
