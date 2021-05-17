@@ -10,6 +10,7 @@
                 <a class="nav-link" href="/about">About Me</a>
                 <a class="nav-link" href="/contact">My Contact</a>
                 <a class="nav-link" href="/buku">My Book</a>
+                <a class="nav-link" href="/karyawan">My Data</a>
             </div>
         </div>
     </div>
