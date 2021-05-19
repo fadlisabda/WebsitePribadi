@@ -7,7 +7,7 @@
             <a href="/buku/create" class="btn btn-primary mb-3">Tambah Data Buku</a>
             <form action="" method="get">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword">
+                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">Cari</button>
                     </div>
@@ -22,8 +22,8 @@
                     <?= session()->getFlashdata('pesan'); ?>
                 </div>
             <?php endif; ?>
-            <table class="table">
-                <thead class="table-dark">
+            <table class="table table-bordered">
+                <thead class="table-primary">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Sampul</th>
