@@ -11,6 +11,11 @@
                 <a class="nav-link active" href="/contact">My Contact</a>
                 <a class="nav-link active" href="/buku">My Book</a>
                 <a class="nav-link active" href="/karyawan">My Data</a>
+                <?php if (logged_in()) : ?>
+                    <a class="nav-link active" href="/logout">Logout</a>
+                <?php else : ?>
+                    <a class="nav-link active" href="/login">Login</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
