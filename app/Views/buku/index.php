@@ -22,29 +22,31 @@
                     <?= session()->getFlashdata('pesan'); ?>
                 </div>
             <?php endif; ?>
-            <table class="table table-bordered">
-                <thead class="table-primary">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Sampul</th>
-                        <th scope="col">Judul</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1 + (2 * ($currentPage - 1)); ?>
-                    <?php foreach ($buku as $b) : ?>
+            <div class="table-responsive-sm">
+                <table class="table table-bordered">
+                    <thead class="table-primary">
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><img src="/img/<?= $b['sampul'] ?>" class="sampul"></td>
-                            <td><?= $b['judul']; ?></td>
-                            <td>
-                                <a href="/buku/<?= $b['slug']; ?>" class="btn btn-success">Detail</a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Sampul</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1 + (2 * ($currentPage - 1)); ?>
+                        <?php foreach ($buku as $b) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><img src="/img/<?= $b['sampul'] ?>" class="sampul"></td>
+                                <td><?= $b['judul']; ?></td>
+                                <td>
+                                    <a href="/buku/<?= $b['slug']; ?>" class="btn btn-success">Detail</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
             <?= $pager->links('buku', 'buku_pagination'); ?>
         </div>
     </div>

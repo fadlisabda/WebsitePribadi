@@ -16,29 +16,31 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1 + (6 * ($currentPage - 1)); ?>
-                    <?php foreach ($karyawan as $k) : ?>
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><?= $k['nama']; ?></td>
-                            <td><?= $k['email']; ?></td>
-                            <td>
-                                <a href="" class="btn btn-success">Detail</a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1 + (6 * ($currentPage - 1)); ?>
+                        <?php foreach ($karyawan as $k) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= $k['nama']; ?></td>
+                                <td><?= $k['email']; ?></td>
+                                <td>
+                                    <a href="" class="btn btn-success">Detail</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
             <?= $pager->links('data', 'karyawan_pagination'); ?>
         </div>
     </div>
