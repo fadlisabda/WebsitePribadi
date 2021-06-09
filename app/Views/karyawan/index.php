@@ -23,7 +23,6 @@
                             <th scope="col">#</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +32,6 @@
                                 <th scope="row"><?= $i++; ?></th>
                                 <td><?= $k['nama']; ?></td>
                                 <td><?= $k['email']; ?></td>
-                                <td>
-                                    <a href="" class="btn btn-success">Detail</a>
-                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
